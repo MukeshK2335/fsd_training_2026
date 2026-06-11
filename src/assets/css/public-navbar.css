@@ -1,0 +1,172 @@
+.public-navbar {
+
+
+    background:rgba(255,255,255,.9);
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:
+    0 5px 25px rgba(0,0,0,.08);
+
+    padding:14px 0;
+
+}
+
+
+
+/* Brand */
+
+
+.brand-logo {
+
+    font-size:32px;
+
+}
+
+
+.brand-name {
+
+    font-size:24px;
+
+    font-weight:800;
+
+    color:#0b3c5d;
+
+    line-height:20px;
+
+}
+
+
+
+.brand-sub {
+
+    font-size:11px;
+
+    color:#777;
+
+    letter-spacing:1px;
+
+}
+
+
+
+
+
+/* Menu */
+
+
+.nav-link {
+
+
+    color:#333 !important;
+
+    font-weight:600;
+
+    padding:8px 18px !important;
+
+    border-radius:20px;
+
+    transition:.3s;
+
+}
+
+
+
+.nav-link:hover {
+
+
+    background:#eaf4ff;
+
+    color:#0077ff !important;
+
+}
+
+
+
+.nav-link.active {
+
+
+    background:#0077ff;
+
+    color:white !important;
+
+}
+
+
+
+
+
+
+/* Buttons */
+
+
+.signup-button {
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #0077ff,
+        #00c6ff
+    );
+
+
+    border:none;
+
+    box-shadow:
+    0 8px 20px rgba(0,119,255,.3);
+
+}
+
+
+
+.signup-button:hover {
+
+
+    transform:translateY(-2px);
+
+}
+
+
+
+
+
+@media(max-width:991px){
+
+
+    .public-navbar {
+
+        background:white;
+
+    }
+
+
+
+    .navbar-nav {
+
+        margin-top:20px;
+
+        text-align:center;
+
+    }
+
+
+
+    .navbar-actions {
+
+        justify-content:center;
+
+        margin-top:20px;
+
+    }
+
+
+
+    .nav-link {
+
+        margin:5px;
+
+    }
+
+}

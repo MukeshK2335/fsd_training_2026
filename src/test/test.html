@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ATB Dashboard</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+    <div class="sidebar-content">
+
+        <div class="logo">
+            <i class="bi bi-airplane-fill"></i>
+            <span>ATB</span>
+        </div>
+
+        <p class="menu-title">MAIN MENU</p>
+
+        <ul class="nav flex-column">
+
+            <li class="nav-item">
+                <a href="#" class="nav-link active">
+                    <i class="bi bi-grid"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="bi bi-people"></i>
+                    Passengers
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="bi bi-building"></i>
+                    Flight Owners
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="bi bi-airplane"></i>
+                    Flights
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="bi bi-signpost"></i>
+                    Routes
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="bi bi-calendar-event"></i>
+                    Schedules
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="bi bi-ticket-perforated"></i>
+                    Bookings
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="bi bi-credit-card"></i>
+                    Payments
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="bi bi-x-circle"></i>
+                    Cancellations
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="logout-container">
+        <a href="login.html" class="logout-btn">
+            <i class="bi bi-box-arrow-right"></i>
+            Logout
+        </a>
+    </div>
+
+</aside>
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <!-- Top Navbar -->
+
+        <div class="top-navbar">
+
+            <h3>Dashboard</h3>
+
+            <div class="user-box">
+                <i class="bi bi-person-circle"></i>
+
+                <div>
+                    <small>Welcome Back</small><br>
+                    <strong>Mukesh</strong>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Stats Cards -->
+
+        <div class="row g-4">
+
+            <div class="col-lg-3 col-md-6">
+                <div class="dashboard-card">
+                    <div class="card-icon">
+                        <i class="bi bi-people"></i>
+                    </div>
+                    <h6>Total Passengers</h6>
+                    <h2>1,284</h2>
+                    <p>+12 this week</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="dashboard-card">
+                    <div class="card-icon">
+                        <i class="bi bi-airplane"></i>
+                    </div>
+                    <h6>Total Flights</h6>
+                    <h2>145</h2>
+                    <p>+5 today</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="dashboard-card">
+                    <div class="card-icon">
+                        <i class="bi bi-ticket-perforated"></i>
+                    </div>
+                    <h6>Total Bookings</h6>
+                    <h2>3,540</h2>
+                    <p>+48 today</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="dashboard-card">
+                    <div class="card-icon">
+                        <i class="bi bi-currency-rupee"></i>
+                    </div>
+                    <h6>Revenue</h6>
+                    <h2>₹8.4L</h2>
+                    <p>This Month</p>
+                </div>
+            </div>
+
+        </div>
+
+        
+
+        <!-- Recent Bookings -->
+
+        <div class="table-card">
+
+            <h4 class="mb-4">Recent Bookings</h4>
+
+            <div class="table-responsive">
+
+                <table class="table align-middle">
+
+                    <thead>
+                        <tr>
+                            <th>Passenger</th>
+                            <th>Flight</th>
+                            <th>Route</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Mukesh K</td>
+                            <td>6E-305</td>
+                            <td>DEL → BOM</td>
+                            <td>
+                                <span class="status success">
+                                    Confirmed
+                                </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Priya N</td>
+                            <td>6E-201</td>
+                            <td>HYD → DEL</td>
+                            <td>
+                                <span class="status success">
+                                    Confirmed
+                                </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Arjun R</td>
+                            <td>AI-101</td>
+                            <td>BOM → CHN</td>
+                            <td>
+                                <span class="status pending">
+                                    Pending
+                                </span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>

@@ -27,25 +27,22 @@ function PublicSearch() {
     };
 
     return (
-    <div style={{minHeight: "100vh",background: "linear-gradient(to bottom, #f8fbff, #eef4ff)",paddingTop: "130px",paddingBottom: "50px"}}>
+    <div style={{paddingTop: "130px",paddingBottom: "50px"}}>
         <div className="container">
             <div className="row justify-content-center">
                 <div className="col-xl-8 col-lg-9 col-md-11">
                     <div className="card border-0 shadow-lg rounded-4 overflow-hidden">
                         <div className="text-center text-white py-4"style={{background:"linear-gradient(135deg,#0d6efd,#6610f2)"}}>
-                            <h1 className="fw-bold mb-2">
-                                Search Flights
-                            </h1>
-                            <p className="mb-0 fs-5">
-                                Find your perfect flight
-                            </p>
+                            <h1 className="fw-bold mb-2">Search Flights</h1>
+                            <p className="mb-0 fs-5">Find your perfect flight</p>
                         </div>
                         <div className="card-body p-4">
-                            {errmsg && (
+                            {errmsg !==undefined? 
                                 <div className="alert alert-danger">
                                     {errmsg}
                                 </div>
-                            )}
+                                :""
+                            }
                             <form onSubmit={(e)=>search(e)}>
                                 <div className="row g-4">
                                     <div className="col-md-4">

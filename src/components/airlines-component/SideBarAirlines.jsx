@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
+function SideBarAirlines() {
 
-
-function SideBArAdmin() {
     const navigate = useNavigate()
     const toLogOut = () => {
 
@@ -24,53 +23,39 @@ function SideBArAdmin() {
                 <ul className="nav flex-column">
 
                     <li className="nav-item">
-                        <Link  to="/admin" className="nav-link active bi bi-grid">
+                        <Link  to="/airlines" className="nav-link active bi bi-grid">
                             Dashboard
                         </Link>
                     </li>
+                    
                     <li className="nav-item">
-                        <Link to="/admin/passengers" className="nav-link bi bi-people">
-                        Passengers
+                         <Link  to="/airlines/my-flights" className="nav-link bi bi-airplane">
+                          My Flights
                         </Link>
                     </li>
-                    <li className="nav-item">
-                        <Link to="/admin/airlines"className="nav-link bi bi-building">
-                          Airlines
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to="/admin/add-admin"className="nav-link bi bi-building">
-                          Admin
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                         <Link  to="/admin/airlines" className="nav-link bi bi-airplane">
-                          Flights
-                        </Link>
-                    </li>
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                         <Link  to="/admin/routes" className="nav-link bi bi-signpost">
                         Routes
                         </Link>
-                    </li>
+                    </li> */}
                     <li className="nav-item">
-                        <Link to="/admin/schedules" className="nav-link bi bi-calendar-event">
-                        Schedules
+                        <Link to="/airlines/add-schedule" className="nav-link bi bi-calendar-event">
+                        My Schedules
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/admin/bookings" className="nav-link bi bi-ticket-perforated">
-                        Bookings
+                        <Link to="/airlines/bookings" className="nav-link bi bi-ticket-perforated">
+                        My Bookings
                         </Link>
                     </li>
                     <li className="nav-item">
                         <Link to="/admin/payments" className="nav-link bi bi-credit-card">
-                        Payments
+                        My Payments
                         </Link>
                     </li>
                     <li className="nav-item">
                         <Link to="/admin/cancellations" className="nav-link bi bi-x-circle">
-                         Cancellations
+                         Cancellations Request
                         </Link>
                     </li>
 
@@ -88,4 +73,4 @@ function SideBArAdmin() {
         </aside>
     )
 }
-export default SideBArAdmin
+export default SideBarAirlines

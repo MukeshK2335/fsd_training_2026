@@ -1,0 +1,60 @@
+.flight-card{
+    border-radius:20px;
+}
+
+.flight-count{
+    padding:8px 14px;
+    border-radius:20px;
+    font-size:.9rem;
+}
+
+.flight-table thead th{
+    background:#f8fafc;
+    color:#64748b;
+    font-size:.85rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    border-bottom:2px solid #e9ecef;
+    padding:16px;
+}
+
+.flight-table tbody td{
+    padding:18px 16px;
+    vertical-align:middle;
+    border-color:#f1f5f9;
+}
+
+.flight-table tbody tr{
+    transition:.3s ease;
+}
+
+.flight-table tbody tr:hover{
+    background:#f8fbff;
+}
+
+.flight-avatar{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:#0d6efd;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.flight-id{
+    color:#0d6efd;
+    font-weight:600;
+}
+
+.flight-number{
+    font-weight:600;
+    color:#495057;
+    letter-spacing:.5px;
+}
+
+.flight-table{
+    min-width:1000px;
+}

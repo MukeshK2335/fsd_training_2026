@@ -58,7 +58,7 @@ function Login() {
                     break;
 
                 case "FLIGHT_OWNER":
-                    navigate("/flight-owner")
+                    navigate("/airlines")
                     break;
 
                 case "ADMIN":

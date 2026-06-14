@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 function RouteAdd() {
     const [origin, setOrigin] = useState()
@@ -8,6 +9,7 @@ function RouteAdd() {
     const [errmsg, setErrmsg] = useState()
     const [existMsg, setExistMsg] = useState()
     const addRouteApi = "http://localhost:8080/api/route/add"
+    const navigate=useNavigate()
 
     const addRoute = async (e) => {
         e.preventDefault()
@@ -45,8 +47,16 @@ function RouteAdd() {
     return (
         <div className="container">
             <div className="row mt-5 justify-content-center">
+                <div className="d-flex justify-content-start">
+                    <button onClick={() => navigate("/admin/routes")} className="btn btn-primary">
+                        <i className="bi bi-plus-arrow me-2"></i>
+                        Go Back
+                    </button>
+                </div>
                 <div className="col-md-5">
+
                     <div className="card shadow-lg border-0 rounded-4">
+
                         <div className="card-header text-center bg-primary text-white py-3 rounded-top-4">
                             <h5 className="mb-0 fw-semibold">✈️ Add Route</h5>
                         </div>

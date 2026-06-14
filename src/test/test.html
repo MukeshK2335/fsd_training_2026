@@ -1,252 +1,623 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SimplyFly – Flight Owner Dashboard</title>
 
-<title>ATB Dashboard</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tabler Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet" />
 
-<link rel="stylesheet"
-href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
-<link rel="stylesheet" href="style.css">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-<div class="wrapper">
+<!-- ==================== SIDEBAR ==================== -->
+<aside class="sidebar">
 
-    <!-- Sidebar -->
-
-    <aside class="sidebar">
-
-    <div class="sidebar-content">
-
-        <div class="logo">
-            <i class="bi bi-airplane-fill"></i>
-            <span>ATB</span>
-        </div>
-
-        <p class="menu-title">MAIN MENU</p>
-
-        <ul class="nav flex-column">
-
-            <li class="nav-item">
-                <a href="#" class="nav-link active">
-                    <i class="bi bi-grid"></i>
-                    Dashboard
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="bi bi-people"></i>
-                    Passengers
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="bi bi-building"></i>
-                    Flight Owners
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="bi bi-airplane"></i>
-                    Flights
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="bi bi-signpost"></i>
-                    Routes
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="bi bi-calendar-event"></i>
-                    Schedules
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="bi bi-ticket-perforated"></i>
-                    Bookings
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="bi bi-credit-card"></i>
-                    Payments
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="bi bi-x-circle"></i>
-                    Cancellations
-                </a>
-            </li>
-
-        </ul>
-
+    <div class="sidebar-logo">
+        <a href="#">
+            <div class="logo-icon">✈️</div>
+            <div>
+                <div class="logo-text">SimplyFly</div>
+                <div class="logo-sub">Flight Owner Portal</div>
+            </div>
+        </a>
     </div>
 
-    <div class="logout-container">
-        <a href="login.html" class="logout-btn">
-            <i class="bi bi-box-arrow-right"></i>
-            Logout
+    <nav class="sidebar-menu">
+        <div class="menu-section-label">Main Menu</div>
+
+        <a href="#" class="nav-item active">
+            <i class="ti ti-dashboard"></i> Dashboard
+        </a>
+        <a href="#" class="nav-item">
+            <i class="ti ti-plane"></i> My Flights
+        </a>
+        <a href="#" class="nav-item">
+            <i class="ti ti-calendar-event"></i> Schedules
+        </a>
+        <a href="#" class="nav-item">
+            <i class="ti ti-ticket"></i> Bookings
+            <span class="nav-badge">32</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="ti ti-armchair"></i> Seats
+        </a>
+
+        <div class="menu-section-label">Management</div>
+
+        <a href="#" class="nav-item">
+            <i class="ti ti-receipt-refund"></i> Cancellations
+            <span class="nav-badge">8</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="ti ti-credit-card"></i> Payments
+        </a>
+        <a href="#" class="nav-item">
+            <i class="ti ti-chart-bar"></i> Reports
+        </a>
+    </nav>
+
+    <div class="sidebar-footer">
+        <a href="#" class="nav-item">
+            <i class="ti ti-settings"></i> Settings
+        </a>
+        <a href="#" class="nav-item">
+            <i class="ti ti-logout"></i> Logout
         </a>
     </div>
 
 </aside>
 
-    <!-- Main Content -->
+<!-- ==================== MAIN CONTENT ==================== -->
+<div class="main-content">
 
-    <main class="main-content">
+    <!-- TOPBAR -->
+    <header class="topbar">
+        <div class="topbar-left">
+            <div class="page-title">Dashboard</div>
+            <div class="page-subtitle">Monday, 13 June 2026</div>
+        </div>
 
-        <!-- Top Navbar -->
+        <div class="topbar-right">
 
-        <div class="top-navbar">
+            <!-- Notification -->
+            <div class="topbar-icon-btn">
+                <i class="ti ti-bell"></i>
+                <span class="notif-dot"></span>
+            </div>
 
-            <h3>Dashboard</h3>
+            <!-- Settings -->
+            <div class="topbar-icon-btn">
+                <i class="ti ti-settings"></i>
+            </div>
 
-            <div class="user-box">
-                <i class="bi bi-person-circle"></i>
+            <!-- Welcome Message -->
+            <div class="welcome-section">
+                <div class="welcome-texts">
+                    <div class="welcome-msg">Welcome back,</div>
+                    <div class="welcome-name">Rahul Mehta</div>
+                    <div class="welcome-role">✈️ IndiGo Airlines</div>
+                </div>
+                <div class="user-avatar">RM</div>
+            </div>
 
-                <div>
-                    <small>Welcome Back</small><br>
-                    <strong>Mukesh</strong>
+        </div>
+    </header>
+
+    <!-- DASHBOARD BODY -->
+    <div class="dashboard-body">
+
+        <!-- ===== METRIC CARDS ===== -->
+        <div class="row g-3 mb-4">
+            <div class="col-xl-3 col-md-6">
+                <div class="metric-card">
+                    <div class="metric-icon icon-blue">
+                        <i class="ti ti-plane"></i>
+                    </div>
+                    <div class="metric-value">4</div>
+                    <div class="metric-label">My Flights</div>
+                    <div class="metric-trend trend-neutral">
+                        <i class="ti ti-circle-check"></i> 3 active, 1 maintenance
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+                <div class="metric-card">
+                    <div class="metric-icon icon-green">
+                        <i class="ti ti-calendar-event"></i>
+                    </div>
+                    <div class="metric-value">18</div>
+                    <div class="metric-label">Schedules This Month</div>
+                    <div class="metric-trend trend-up">
+                        <i class="ti ti-arrow-up"></i> +3 from last month
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+                <div class="metric-card">
+                    <div class="metric-icon icon-orange">
+                        <i class="ti ti-ticket"></i>
+                    </div>
+                    <div class="metric-value">1,240</div>
+                    <div class="metric-label">Total Bookings</div>
+                    <div class="metric-trend trend-up">
+                        <i class="ti ti-arrow-up"></i> +32 today
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+                <div class="metric-card">
+                    <div class="metric-icon icon-red">
+                        <i class="ti ti-receipt-refund"></i>
+                    </div>
+                    <div class="metric-value">28</div>
+                    <div class="metric-label">Cancellations</div>
+                    <div class="metric-trend trend-down">
+                        <i class="ti ti-alert-circle"></i> 8 pending approval
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== CHARTS ROW ===== -->
+        <div class="row g-3 mb-4">
+
+            <!-- Monthly Bookings Chart -->
+            <div class="col-xl-8">
+                <div class="section-card">
+                    <div class="section-card-header">
+                        <div class="section-card-title">
+                            <i class="ti ti-chart-bar"></i> Monthly Bookings
+                        </div>
+                        <a href="#" class="view-all-link">View report</a>
+                    </div>
+                    <div class="section-card-body">
+                        <div class="chart-legend">
+                            <span><span class="legend-dot" style="background:#0d6efd;"></span>Bookings 2026</span>
+                            <span><span class="legend-dot" style="background:#e8ecf0; border:1px solid #ccc;"></span>Bookings 2025</span>
+                        </div>
+                        <div style="position:relative; width:100%; height:220px;">
+                            <canvas id="bookingsChart"
+                                role="img"
+                                aria-label="Bar chart comparing monthly bookings in 2025 and 2026 from January to June">
+                                2026: Jan 180, Feb 210, Mar 260, Apr 230, May 290, Jun 320.
+                                2025: Jan 140, Feb 170, Mar 210, Apr 195, May 240, Jun 265.
+                            </canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Booking Status Donut -->
+            <div class="col-xl-4">
+                <div class="section-card">
+                    <div class="section-card-header">
+                        <div class="section-card-title">
+                            <i class="ti ti-chart-donut"></i> Booking Status
+                        </div>
+                    </div>
+                    <div class="section-card-body">
+                        <div class="chart-legend">
+                            <span><span class="legend-dot" style="background:#1a8a34;"></span>Confirmed 72%</span>
+                            <span><span class="legend-dot" style="background:#e67e00;"></span>Pending 18%</span>
+                            <span><span class="legend-dot" style="background:#d32f2f;"></span>Cancelled 10%</span>
+                        </div>
+                        <div style="position:relative; width:100%; height:220px;">
+                            <canvas id="statusChart"
+                                role="img"
+                                aria-label="Donut chart of booking status: Confirmed 72%, Pending 18%, Cancelled 10%">
+                                Confirmed 72%, Pending 18%, Cancelled 10%.
+                            </canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
 
         </div>
 
-        <!-- Stats Cards -->
+        <!-- ===== REVENUE CHART + MY FLIGHTS ===== -->
+        <div class="row g-3 mb-4">
 
-        <div class="row g-4">
-
-            <div class="col-lg-3 col-md-6">
-                <div class="dashboard-card">
-                    <div class="card-icon">
-                        <i class="bi bi-people"></i>
+            <!-- Revenue Chart -->
+            <div class="col-xl-7">
+                <div class="section-card">
+                    <div class="section-card-header">
+                        <div class="section-card-title">
+                            <i class="ti ti-currency-rupee"></i> Monthly Revenue
+                        </div>
+                        <a href="#" class="view-all-link">View all</a>
                     </div>
-                    <h6>Total Passengers</h6>
-                    <h2>1,284</h2>
-                    <p>+12 this week</p>
+                    <div class="section-card-body">
+                        <div class="chart-legend">
+                            <span><span class="legend-dot" style="background:#1a8a34;"></span>Revenue (₹)</span>
+                        </div>
+                        <div style="position:relative; width:100%; height:200px;">
+                            <canvas id="revenueChart"
+                                role="img"
+                                aria-label="Line chart of monthly revenue from January to June 2026">
+                                Jan 82K, Feb 97K, Mar 118K, Apr 105K, May 134K, Jun 148K.
+                            </canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-6">
-                <div class="dashboard-card">
-                    <div class="card-icon">
-                        <i class="bi bi-airplane"></i>
+            <!-- My Flights -->
+            <div class="col-xl-5">
+                <div class="section-card">
+                    <div class="section-card-header">
+                        <div class="section-card-title">
+                            <i class="ti ti-plane"></i> My Flights
+                        </div>
+                        <a href="#" class="view-all-link">Manage</a>
                     </div>
-                    <h6>Total Flights</h6>
-                    <h2>145</h2>
-                    <p>+5 today</p>
-                </div>
-            </div>
+                    <div class="section-card-body">
 
-            <div class="col-lg-3 col-md-6">
-                <div class="dashboard-card">
-                    <div class="card-icon">
-                        <i class="bi bi-ticket-perforated"></i>
-                    </div>
-                    <h6>Total Bookings</h6>
-                    <h2>3,540</h2>
-                    <p>+48 today</p>
-                </div>
-            </div>
+                        <div class="flight-card">
+                            <div class="flight-info">
+                                <div class="flight-name">IndiGo Express</div>
+                                <div class="flight-number">6E-201 &bull; DEL → BOM</div>
+                            </div>
+                            <div class="text-end">
+                                <span class="badge-status badge-active">Active</span>
+                                <div class="flight-seats">Seats <span>180</span></div>
+                            </div>
+                        </div>
 
-            <div class="col-lg-3 col-md-6">
-                <div class="dashboard-card">
-                    <div class="card-icon">
-                        <i class="bi bi-currency-rupee"></i>
+                        <div class="flight-card">
+                            <div class="flight-info">
+                                <div class="flight-name">IndiGo Swift</div>
+                                <div class="flight-number">6E-305 &bull; HYD → DEL</div>
+                            </div>
+                            <div class="text-end">
+                                <span class="badge-status badge-active">Active</span>
+                                <div class="flight-seats">Seats <span>200</span></div>
+                            </div>
+                        </div>
+
+                        <div class="flight-card">
+                            <div class="flight-info">
+                                <div class="flight-name">IndiGo Plus</div>
+                                <div class="flight-number">6E-410 &bull; BOM → CHN</div>
+                            </div>
+                            <div class="text-end">
+                                <span class="badge-status badge-maintenance">Maintenance</span>
+                                <div class="flight-seats">Seats <span>160</span></div>
+                            </div>
+                        </div>
+
+                        <div class="flight-card">
+                            <div class="flight-info">
+                                <div class="flight-name">IndiGo Lite</div>
+                                <div class="flight-number">6E-510 &bull; DEL → HYD</div>
+                            </div>
+                            <div class="text-end">
+                                <span class="badge-status badge-active">Active</span>
+                                <div class="flight-seats">Seats <span>120</span></div>
+                            </div>
+                        </div>
+
                     </div>
-                    <h6>Revenue</h6>
-                    <h2>₹8.4L</h2>
-                    <p>This Month</p>
                 </div>
             </div>
 
         </div>
 
-        
+        <!-- ===== TABLES ROW ===== -->
+        <div class="row g-3 mb-4">
 
-        <!-- Recent Bookings -->
+            <!-- Upcoming Schedules -->
+            <div class="col-xl-6">
+                <div class="section-card">
+                    <div class="section-card-header">
+                        <div class="section-card-title">
+                            <i class="ti ti-calendar-event"></i> Upcoming Schedules
+                        </div>
+                        <a href="#" class="view-all-link">View all</a>
+                    </div>
+                    <div class="section-card-body p-0">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Flight</th>
+                                    <th>Route</th>
+                                    <th>Date</th>
+                                    <th>Departure</th>
+                                    <th>Fare</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>6E-305</strong></td>
+                                    <td>DEL → BOM</td>
+                                    <td>Jun 14</td>
+                                    <td>14:00</td>
+                                    <td>₹5,200</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>6E-201</strong></td>
+                                    <td>HYD → DEL</td>
+                                    <td>Jun 15</td>
+                                    <td>06:00</td>
+                                    <td>₹4,500</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>6E-510</strong></td>
+                                    <td>BOM → CHN</td>
+                                    <td>Jun 16</td>
+                                    <td>09:30</td>
+                                    <td>₹3,800</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>6E-305</strong></td>
+                                    <td>DEL → BOM</td>
+                                    <td>Jun 17</td>
+                                    <td>14:00</td>
+                                    <td>₹5,200</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>6E-201</strong></td>
+                                    <td>HYD → DEL</td>
+                                    <td>Jun 18</td>
+                                    <td>06:00</td>
+                                    <td>₹4,500</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
-        <div class="table-card">
-
-            <h4 class="mb-4">Recent Bookings</h4>
-
-            <div class="table-responsive">
-
-                <table class="table align-middle">
-
-                    <thead>
-                        <tr>
-                            <th>Passenger</th>
-                            <th>Flight</th>
-                            <th>Route</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-
-                        <tr>
-                            <td>Mukesh K</td>
-                            <td>6E-305</td>
-                            <td>DEL → BOM</td>
-                            <td>
-                                <span class="status success">
-                                    Confirmed
-                                </span>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Priya N</td>
-                            <td>6E-201</td>
-                            <td>HYD → DEL</td>
-                            <td>
-                                <span class="status success">
-                                    Confirmed
-                                </span>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Arjun R</td>
-                            <td>AI-101</td>
-                            <td>BOM → CHN</td>
-                            <td>
-                                <span class="status pending">
-                                    Pending
-                                </span>
-                            </td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
+            <!-- Recent Bookings -->
+            <div class="col-xl-6">
+                <div class="section-card">
+                    <div class="section-card-header">
+                        <div class="section-card-title">
+                            <i class="ti ti-ticket"></i> Recent Bookings
+                        </div>
+                        <a href="#" class="view-all-link">View all</a>
+                    </div>
+                    <div class="section-card-body p-0">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Passenger</th>
+                                    <th>Flight</th>
+                                    <th>Seat</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Mukesh K</td>
+                                    <td>6E-305</td>
+                                    <td>5A</td>
+                                    <td>₹5,200</td>
+                                    <td><span class="badge-status badge-confirmed">Confirmed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Priya N</td>
+                                    <td>6E-201</td>
+                                    <td>12B</td>
+                                    <td>₹4,500</td>
+                                    <td><span class="badge-status badge-confirmed">Confirmed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Arjun R</td>
+                                    <td>6E-305</td>
+                                    <td>8C</td>
+                                    <td>₹5,200</td>
+                                    <td><span class="badge-status badge-pending">Pending</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Sneha K</td>
+                                    <td>6E-510</td>
+                                    <td>3A</td>
+                                    <td>₹3,800</td>
+                                    <td><span class="badge-status badge-cancelled">Cancelled</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Agalya M</td>
+                                    <td>6E-201</td>
+                                    <td>15D</td>
+                                    <td>₹4,500</td>
+                                    <td><span class="badge-status badge-confirmed">Confirmed</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
 
         </div>
 
-    </main>
+        <!-- ===== PENDING CANCELLATIONS ===== -->
+        <div class="row g-3">
+            <div class="col-12">
+                <div class="section-card">
+                    <div class="section-card-header">
+                        <div class="section-card-title">
+                            <i class="ti ti-receipt-refund"></i> Pending Cancellations
+                            <span class="badge bg-danger ms-2" style="font-size:11px;">8 Pending</span>
+                        </div>
+                        <a href="#" class="view-all-link">View all</a>
+                    </div>
+                    <div class="section-card-body p-0">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Passenger</th>
+                                    <th>Flight</th>
+                                    <th>Route</th>
+                                    <th>Booking Date</th>
+                                    <th>Refund Amount</th>
+                                    <th>Reason</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Sneha K</td>
+                                    <td>6E-510</td>
+                                    <td>BOM → CHN</td>
+                                    <td>Jun 10</td>
+                                    <td>₹3,800</td>
+                                    <td>Change of plans</td>
+                                    <td><span class="badge-status badge-pending">Pending</span></td>
+                                    <td>
+                                        <button class="btn-approve me-1">Approve</button>
+                                        <button class="btn-reject">Reject</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Rahul D</td>
+                                    <td>6E-305</td>
+                                    <td>DEL → BOM</td>
+                                    <td>Jun 09</td>
+                                    <td>₹5,200</td>
+                                    <td>Emergency</td>
+                                    <td><span class="badge-status badge-pending">Pending</span></td>
+                                    <td>
+                                        <button class="btn-approve me-1">Approve</button>
+                                        <button class="btn-reject">Reject</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Meera P</td>
+                                    <td>6E-201</td>
+                                    <td>HYD → DEL</td>
+                                    <td>Jun 08</td>
+                                    <td>₹4,500</td>
+                                    <td>Medical reason</td>
+                                    <td><span class="badge-status badge-approved">Approved</span></td>
+                                    <td>—</td>
+                                </tr>
+                                <tr>
+                                    <td>Karan S</td>
+                                    <td>6E-305</td>
+                                    <td>DEL → BOM</td>
+                                    <td>Jun 07</td>
+                                    <td>₹5,200</td>
+                                    <td>Trip cancelled</td>
+                                    <td><span class="badge-status badge-rejected">Rejected</span></td>
+                                    <td>—</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+    </div>
 </div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Charts -->
+<script>
+    // Monthly Bookings Chart
+    new Chart(document.getElementById('bookingsChart'), {
+        type: 'bar',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [
+                {
+                    label: 'Bookings 2026',
+                    data: [180, 210, 260, 230, 290, 320],
+                    backgroundColor: '#0d6efd',
+                    borderRadius: 6,
+                    borderSkipped: false
+                },
+                {
+                    label: 'Bookings 2025',
+                    data: [140, 170, 210, 195, 240, 265],
+                    backgroundColor: '#e8ecf0',
+                    borderRadius: 6,
+                    borderSkipped: false
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+                x: { grid: { display: false }, ticks: { font: { size: 11 } } },
+                y: { grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { font: { size: 11 } } }
+            }
+        }
+    });
+
+    // Booking Status Donut
+    new Chart(document.getElementById('statusChart'), {
+        type: 'doughnut',
+        data: {
+            labels: ['Confirmed', 'Pending', 'Cancelled'],
+            datasets: [{
+                data: [72, 18, 10],
+                backgroundColor: ['#1a8a34', '#e67e00', '#d32f2f'],
+                borderWidth: 0,
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '68%',
+            plugins: { legend: { display: false } }
+        }
+    });
+
+    // Revenue Line Chart
+    new Chart(document.getElementById('revenueChart'), {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{
+                label: 'Revenue',
+                data: [82000, 97000, 118000, 105000, 134000, 148000],
+                borderColor: '#1a8a34',
+                backgroundColor: 'rgba(26,138,52,0.08)',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 5,
+                pointBackgroundColor: '#1a8a34',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+                x: { grid: { display: false }, ticks: { font: { size: 11 } } },
+                y: {
+                    grid: { color: 'rgba(0,0,0,0.05)' },
+                    ticks: {
+                        font: { size: 11 },
+                        callback: v => '₹' + Math.round(v / 1000) + 'K'
+                    }
+                }
+            }
+        }
+    });
+</script>
 
 </body>
 </html>

@@ -1,0 +1,149 @@
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero-section {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* =========================
+   BADGE
+========================= */
+
+.hero-badge {
+    display: inline-block;
+    padding: 10px 20px;
+    background: rgba(37, 99, 235, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 50px;
+    color: #60a5fa;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.hero-title {
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 25px;
+}
+
+.hero-title .text-primary {
+    color: #3b82f6 !important;
+}
+
+/* =========================
+   SUBTITLE
+========================= */
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #cbd5e1;
+    max-width: 550px;
+    margin-bottom: 35px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.hero-buttons {
+    margin-top: 20px;
+}
+
+.hero-buttons .btn-primary {
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    border: none;
+    padding: 14px 32px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.hero-buttons .btn-primary:hover {
+    transform: translateY(-3px);
+}
+
+.hero-buttons .btn-outline-primary {
+    padding: 14px 32px;
+    border-radius: 12px;
+    font-weight: 600;
+    border-width: 2px;
+    color: #ffffff;
+    border-color: rgba(255,255,255,0.4);
+}
+
+.hero-buttons .btn-outline-primary:hover {
+    background: #ffffff;
+    color: #0f172a;
+}
+
+/* =========================
+   IMAGE
+========================= */
+
+.hero-image {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 30px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+    transition: 0.4s ease;
+}
+
+.hero-image:hover {
+    transform: translateY(-10px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 992px) {
+
+    .hero-section {
+        text-align: center;
+        padding: 100px 0;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .hero-subtitle {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-image {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .hero-title {
+        font-size: 2.3rem;
+    }
+
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .hero-buttons .btn {
+        margin: 0 !important;
+        width: 100%;
+    }
+}

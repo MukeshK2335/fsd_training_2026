@@ -1,9 +1,17 @@
+import { Outlet } from "react-router-dom"
+import NavBarAirlines from "../components/airlines-component/NavBarAirlines"
+import SideBarAirlines from "../components/airlines-component/SideBarAirlines"
+
 function FlightOwnerDashboard(){
 
     return(
 
-        <div>
-            <h1>Fligth Owner Dashboard</h1>
+       <div className="wrapper">
+        <SideBarAirlines/>
+           <div className="main-content">
+            <NavBarAirlines/>
+            <Outlet/>
+           </div>
         </div>
     )
 }

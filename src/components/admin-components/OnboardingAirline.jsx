@@ -80,8 +80,14 @@ function OnboardingAirline() {
 
     return (
         <div className="container">
+            <button onClick={() => navigate("/admin/airlines")} className="btn btn-primary">
+                <i className="bi bi-plus-arrow me-2"></i>
+                Go Back
+            </button>
             <div className="row mt-5 justify-content-center">
+
                 <div className="col-md-5">
+
                     <div className="card shadow-lg border-0 rounded-4">
                         <div className="card-header text-center bg-primary text-white py-3 rounded-top-4">
                             <h5 className="mb-0 fw-semibold">✈️ Add Airline</h5>

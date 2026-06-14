@@ -1,0 +1,69 @@
+.booking-card {
+    border-radius: 20px;
+}
+
+.booking-count {
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.booking-table {
+    width: 100%;
+}
+
+.booking-table thead th {
+    background: #f8fafc;
+    color: #64748b;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 16px;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.booking-table tbody td {
+    padding: 18px 16px;
+    vertical-align: middle;
+    border-color: #f1f5f9;
+}
+
+.booking-table tbody tr {
+    transition: all 0.3s ease;
+}
+
+.booking-table tbody tr:hover {
+    background: #f8fbff;
+}
+
+.booking-id {
+    color: #0d6efd;
+    font-weight: 600;
+}
+
+.flight-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #0d6efd;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.route-text {
+    font-weight: 600;
+    color: #495057;
+}
+
+.amount-text {
+    font-weight: 700;
+    color: #198754;
+}
+
+.booking-table .badge {
+    font-size: 0.8rem;
+    padding: 7px 12px;
+}

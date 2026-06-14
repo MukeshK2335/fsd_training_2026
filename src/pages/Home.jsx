@@ -1,3 +1,4 @@
+import Landing from "../components/Landing"
 import NavBar from "../components/NavBar"
 
 function Home(){
@@ -6,6 +7,7 @@ function Home(){
 
         <div>
             <NavBar/>
+            <Landing/>
         </div>
     )
 }

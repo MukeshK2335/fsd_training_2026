@@ -22,6 +22,12 @@ import AddFlight from "./components/airlines-component/AddFlight"
 import MyFlights from "./components/airlines-component/MyFlights"
 import AddSchedule from "./components/airlines-component/AddSchedule"
 import BookingAirlines from "./components/airlines-component/BookingAirlines"
+import ScheduleAirlines from "./components/airlines-component/ScheduleAirlines"
+import PaymentAirlines from "./components/airlines-component/PaymentAirlines"
+import CancellationAirlines from "./components/airlines-component/CancellationAirlines"
+import CancellationRequest from "./components/airlines-component/CancellationRequest"
+import PublicSearch from "./components/passenger-components/PublicSearch"
+import Landing from "./components/Landing"
 
 function app(){
 
@@ -29,7 +35,11 @@ function app(){
 
     <div>
       <Routes>
-        <Route path="/" element={<Home/>}></Route>
+        <Route path="/" element={<Home/>}>
+                <Route path="/" element={<Landing/>}></Route>
+                <Route path="search" element={<PublicSearch/>}></Route>
+
+        </Route>
         <Route path="/login" element={<Auth/>}></Route>
         <Route path="/passenger" element={<PassengerDashboard/>}></Route>
         <Route path="/airlines" element={<FlightOwnerDashboard/>}>
@@ -37,7 +47,11 @@ function app(){
                 <Route path="add-flight" element={<AddFlight/>}></Route>
                 <Route path="my-flights" element={<MyFlights/>}></Route>
                 <Route path="add-schedule" element={<AddSchedule/>}></Route>
+                <Route path="schedules" element={<ScheduleAirlines/>}></Route>
                 <Route path="bookings" element={<BookingAirlines/>}></Route>
+                <Route path="payments" element={<PaymentAirlines/>}></Route>
+                <Route path="cancellations" element={<CancellationAirlines/>}></Route>
+                <Route path="cancellation-request" element={<CancellationRequest/>}></Route>
 
         
         </Route>

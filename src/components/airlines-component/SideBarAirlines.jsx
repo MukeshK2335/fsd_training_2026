@@ -39,23 +39,30 @@ function SideBarAirlines() {
                         </Link>
                     </li> */}
                     <li className="nav-item">
-                        <Link to="/airlines/add-schedule" className="nav-link bi bi-calendar-event">
+                        <Link to="/airlines/schedules" className="nav-link bi bi-calendar-event">
                         My Schedules
                         </Link>
                     </li>
+
                     <li className="nav-item">
                         <Link to="/airlines/bookings" className="nav-link bi bi-ticket-perforated">
                         My Bookings
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/admin/payments" className="nav-link bi bi-credit-card">
+                        <Link to="/airlines/payments
+                        " className="nav-link bi bi-credit-card">
                         My Payments
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/admin/cancellations" className="nav-link bi bi-x-circle">
+                        <Link to="/airlines/cancellation-request" className="nav-link bi bi-x-circle">
                          Cancellations Request
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/airlines/cancellations" className="nav-link bi-calendar-event">
+                         Cancellations
                         </Link>
                     </li>
 

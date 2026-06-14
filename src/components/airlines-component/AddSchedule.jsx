@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 function AddSchedule() {
 
@@ -13,6 +14,7 @@ function AddSchedule() {
     const [routeId, setRouteId] = useState(0)
     const [successmsg,setSuccessmsg]=useState()
     const [errmsg,setErrmsg]=useState()
+    const navigate=useNavigate()
 
     const addScheduleApi = "http://localhost:8080/api/schedule/add"
     const getFlightApi = "http://localhost:8080/api/flight/flight-owner"
@@ -83,7 +85,7 @@ function AddSchedule() {
     }
     return (
         <div className="container">
-            <button onClick={() => navigate("/airlines/my-flights")} className="btn btn-primary">
+            <button onClick={() => navigate("/airlines/schedules")} className="btn btn-primary">
                 <i className="bi bi-plus-arrow me-2"></i>
                 Go Back
             </button>

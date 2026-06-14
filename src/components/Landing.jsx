@@ -33,7 +33,7 @@ function Landing(){
                                     Book Flight
                                 </button>
 
-                                <button className="btn btn-outline-primary btn-lg ms-3">
+                                <button className="btn btn-outline-primary btn-lg ms-3" onClick={()=>navigate("/search")}>
                                     Explore Routes
                                 </button>
                             </div>

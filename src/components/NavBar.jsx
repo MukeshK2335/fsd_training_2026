@@ -10,7 +10,6 @@ function NavBar() {
             <div className="container">
 
 
-                {/* Brand */}
                 <Link
                     to="/"
                     className="navbar-brand d-flex align-items-center"

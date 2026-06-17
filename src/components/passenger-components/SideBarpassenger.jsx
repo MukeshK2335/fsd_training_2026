@@ -25,7 +25,7 @@ function SideBarPassenger() {
                 <ul className="nav flex-column">
 
                     <li className="nav-item">
-                        <Link to="/passenger/dashboard" className="nav-link bi bi-grid">
+                        <Link to="/passenger" className="nav-link bi bi-grid">
                             Dashboard
                         </Link>
                     </li>
@@ -37,38 +37,38 @@ function SideBarPassenger() {
                     </li>
 
                     <li className="nav-item">
-                        <Link to="/passenger/search-flights" className="nav-link bi bi-search">
+                        <Link to="/passenger/search" className="nav-link bi bi-search">
                             Search Flights
                         </Link>
                     </li>
 
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                         <Link to="/passenger/book-ticket" className="nav-link bi bi-ticket-perforated">
                             Book Ticket
                         </Link>
-                    </li>
+                    </li> */}
 
                     <li className="nav-item">
-                        <Link to="/passenger/bookings" className="nav-link bi bi-journal-check">
+                        <Link to="/passenger/booking-history" className="nav-link bi bi-journal-check">
                             My Bookings
                         </Link>
                     </li>
 
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                         <Link to="/passenger/upcoming-trips" className="nav-link bi bi-airplane-engines">
                             Upcoming Trips
                         </Link>
-                    </li>
+                    </li> */}
 
                     <li className="nav-item">
-                        <Link to="/passenger/cancelled-tickets" className="nav-link bi bi-x-circle">
+                        <Link to="/passenger/cancellation-history" className="nav-link bi bi-x-circle">
                             Cancelled Tickets
                         </Link>
                     </li>
 
                     <li className="nav-item">
-                        <Link to="/passenger/download-ticket" className="nav-link bi bi-download">
-                            Download Ticket
+                        <Link to="/passenger/view-ticket" className="nav-link bi bi-download">
+                            View Ticket
                         </Link>
                     </li>
 

@@ -121,9 +121,9 @@ function Login() {
                                     type="submit">Login </button>
                             </form>
                             <div className="text-center mt-4">
-                                <small className="text-muted">
+                                {/* <small className="text-muted">
                                     © 2026 ATB Air Ticket Booking
-                                </small>
+                                </small> */}
                             </div>
                         </div>
                     </div>

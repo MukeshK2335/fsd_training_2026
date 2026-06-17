@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom"
 import NavBarAirlines from "../components/airlines-component/NavBarAirlines"
 import SideBarAirlines from "../components/airlines-component/SideBarAirlines"
 
-function FlightOwnerDashboard(){
+function AirlinesDashboard(){
 
     return(
 
@@ -16,4 +16,4 @@ function FlightOwnerDashboard(){
     )
 }
 
-export default FlightOwnerDashboard
+export default AirlinesDashboard

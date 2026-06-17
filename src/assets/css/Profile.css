@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { font-family: 'Inter', sans-serif; background: #f0f4ff; }
+
+.pp-content { padding: 32px; }
+
+/* Hero */
+.pp-hero {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 60%, #a855f7 100%);
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.pp-hero::after {
+  content: '';
+  position: absolute;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  top: -80px; right: -60px;
+  pointer-events: none;
+}
+
+.pp-hero-avatar {
+  width: 76px; height: 76px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 30px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  border: 3px solid rgba(255,255,255,0.4);
+  overflow: hidden;
+}
+.pp-hero-avatar img {
+  width: 100%; height: 100%;
+  object-fit: cover; border-radius: 50%;
+}
+
+.pp-hero-name  { font-size: 22px; font-weight: 700; color: #fff; }
+.pp-hero-email { font-size: 13px; color: rgba(255,255,255,0.75); margin-top: 4px; }
+.pp-hero-badge {
+  margin-top: 10px;
+  display: inline-flex; align-items: center; gap: 5px;
+  background: rgba(255,255,255,0.18); color: #fff;
+  font-size: 11px; font-weight: 600;
+  padding: 4px 12px; border-radius: 20px;
+}
+
+/* Grid */
+.pp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+/* Panel */
+.pp-panel {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 1px 6px rgba(79,70,229,0.08);
+}
+
+.pp-panel-head {
+  padding: 16px 24px;
+  border-bottom: 1px solid #ede9fe;
+  display: flex; align-items: center; gap: 10px;
+}
+
+.pp-panel-head-icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center; font-size: 15px;
+}
+.pp-panel-head-icon.blue   { background: #eff6ff; }
+.pp-panel-head-icon.purple { background: #f5f3ff; }
+
+.pp-panel-head h3 { font-size: 14px; font-weight: 600; color: #1e1b4b; }
+.pp-panel-head p  { font-size: 12px; color: #94a3b8; }
+
+.pp-panel-body { padding: 8px 24px 24px; }
+
+/* Fields */
+.pp-field { padding: 12px 0; border-bottom: 1px solid #f5f3ff; }
+.pp-field:last-child { border-bottom: none; }
+.pp-field-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: #a78bfa; margin-bottom: 3px;
+}
+.pp-field-value { font-size: 14px; font-weight: 500; color: #1e1b4b; }
+
+/* Upload */
+.pp-dropzone {
+  border: 1.5px dashed #c4b5fd;
+  border-radius: 10px; padding: 24px 16px;
+  text-align: center; background: #faf5ff;
+  cursor: pointer; position: relative;
+  transition: border-color 0.15s, background 0.15s;
+  margin-bottom: 14px;
+}
+.pp-dropzone:hover { border-color: #7c3aed; background: #f5f3ff; }
+.pp-dropzone input {
+  position: absolute; inset: 0;
+  opacity: 0; cursor: pointer; width: 100%; height: 100%;
+}
+.pp-dropzone-icon { font-size: 24px; margin-bottom: 6px; }
+.pp-dropzone-text { font-size: 13px; color: #6d28d9; font-weight: 500; }
+.pp-dropzone-text span { color: #7c3aed; font-weight: 600; }
+.pp-dropzone-sub  { font-size: 11px; color: #a78bfa; margin-top: 3px; }
+
+.pp-btn {
+  width: 100%; padding: 11px; border: none; border-radius: 8px;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: #fff; font-family: 'Inter', sans-serif;
+  font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: opacity 0.15s;
+}
+.pp-btn:hover    { opacity: 0.9; }
+.pp-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* Alerts */
+.pp-alert {
+  padding: 10px 14px; border-radius: 8px;
+  font-size: 13px; font-weight: 500;
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.pp-alert--success { background: #dcfce7; color: #166534; }
+.pp-alert--error   { background: #fee2e2; color: #991b1b; }
+.pp-change-pwd-btn {
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.pp-change-pwd-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 768px) {
+  .pp-content { padding: 16px; }
+  .pp-grid    { grid-template-columns: 1fr; }
+  .pp-hero    { flex-direction: column; align-items: flex-start; }
+}

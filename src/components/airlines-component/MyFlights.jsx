@@ -76,6 +76,7 @@ useEffect(  () => {
                                 <th>Total Seats</th>
                                 <th>Check-In Baggage</th>
                                 <th>Cabin Baggage</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
 
@@ -127,6 +128,12 @@ useEffect(  () => {
 
                                     <td>
                                         {flight.cabinBaggage} kg
+                                    </td>
+                                    <td>
+                                        <button className="btn btn-danger btn-sm passenger-delete-btn">
+                                            <i className="bi bi-trash3 me-2"></i>
+                                            Delete
+                                        </button>
                                     </td>
 
                                 </tr>

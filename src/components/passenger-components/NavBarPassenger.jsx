@@ -3,7 +3,7 @@ function NavBarPassenger(){
     return(
         <div className="top-navbar">
 
-            <h3>Air Ticket Booking</h3>
+            <h3></h3>
 
             <div className="user-box">
                 <i className="bi bi-person-circle"></i>

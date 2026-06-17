@@ -29,6 +29,7 @@ body{
 
 .sidebar{
     width:280px;
+    flex-shrink:0;
     background:white;
     border-right:1px solid var(--border);
     padding:25px;
@@ -38,7 +39,10 @@ body{
     flex-direction:column;
     justify-content:space-between;
 
-    min-height:100vh;
+    height:100vh;
+    position:sticky;
+    top:0;
+    overflow-y:auto;
 }
 
 .logo{
@@ -87,7 +91,9 @@ body{
 
 .main-content{
     flex:1;
+    min-width:0;
     padding:30px;
+    overflow-x:auto;
 }
 
 /* Navbar */

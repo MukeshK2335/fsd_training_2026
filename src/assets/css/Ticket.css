@@ -1,0 +1,139 @@
+body {
+    background: #f4f7fb;
+}
+
+.ticket-card {
+    width: 1000px;
+    max-width: 100%;
+    background: white;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+.ticket-header {
+    background: linear-gradient(
+        135deg,
+        #0d6efd,
+        #4ea1ff
+    );
+    color: white;
+    padding: 30px 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ticket-route {
+    padding: 50px 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.city {
+    min-width: 250px;
+}
+
+.city:first-child {
+    text-align: left;
+}
+
+.city:last-child {
+    text-align: right;
+}
+
+.city h1 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    margin: 0;
+}
+
+.flight-line {
+    flex: 1;
+    text-align: center;
+    position: relative;
+}
+
+.flight-line::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    border-top: 2px dashed #c8c8c8;
+}
+
+.flight-line i {
+    position: relative;
+    background: white;
+    padding: 0 15px;
+    font-size: 32px;
+    color: #0d6efd;
+}
+
+.ticket-divider {
+    border-top: 2px dashed #d8d8d8;
+    margin: 0 30px;
+}
+
+.ticket-label {
+    display: block;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.ticket-value {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.ticket-footer {
+    padding: 25px 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.barcode {
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: #1f2937;
+}
+
+@media (max-width: 768px) {
+
+    .ticket-route {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .city {
+        text-align: center !important;
+        min-width: auto;
+    }
+
+    .city h1 {
+        font-size: 2rem;
+    }
+
+    .ticket-footer {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .barcode {
+        font-size: 22px;
+    }
+}

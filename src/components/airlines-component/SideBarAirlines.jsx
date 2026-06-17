@@ -65,6 +65,11 @@ function SideBarAirlines() {
                          Cancellations
                         </Link>
                     </li>
+                    <li className="nav-item">
+                        <Link to="/airlines/profile" className="nav-link bi bi-person-circle">
+                            Profile Information
+                        </Link>
+                    </li>
 
                 </ul>
 

@@ -15,7 +15,7 @@ function App(){
         <Route path="/" element={<Dashboard/>}>
          <Route path="users" element={<UserList/>}></Route>
          <Route path="add-user" element={<AddUser/>}></Route>
-         <Route path="/info" element={<InfoList/>}></Route>
+         <Route path="info" element={<InfoList/>}></Route>
         </Route>
        
       </Routes>

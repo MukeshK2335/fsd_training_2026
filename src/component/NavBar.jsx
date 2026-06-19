@@ -20,6 +20,9 @@ function NavBar(){
             <Link to="/add-user" className="navbar-link fw-bold text-dark fs-5 tracking-tight text-decoration-none transition-all ms-4">
             Add User
             </Link>
+            <Link to="/info" className="navbar-link fw-bold text-dark fs-5 tracking-tight text-decoration-none transition-all ms-4">
+            Info
+            </Link>
         </div>
       
     </header>

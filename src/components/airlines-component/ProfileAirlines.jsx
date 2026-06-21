@@ -1,10 +1,12 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import "../../assets/css/Profile.css"
+import { useNavigate } from "react-router-dom"
 
 function ProfileAirlines() {
     const [errmsg, setErrmsg] = useState()
     const [owner, setOwner] = useState()
+    const navigate=useNavigate()
 
     const profileApi = "http://localhost:8080/api/flight-owner/profile"
 

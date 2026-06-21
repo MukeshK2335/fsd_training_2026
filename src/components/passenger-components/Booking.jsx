@@ -131,6 +131,18 @@ function BookTicket() {
                             <div className="alert alert-danger">{successmsg}</div>
                             : ""
                     }
+                    <div className="text-center mb-4">
+                        <img
+                            src="/images/layout.png"
+                            alt="Aircraft Seat Layout"
+                            className="img-fluid border rounded shadow-sm"
+                            style={{
+                                maxHeight: "400px",
+                                width: "100%",
+                                objectFit: "contain"
+                            }}
+                        />
+                    </div>
                     <form onSubmit={(e) => confirmBooking(e)}>
                         <label className="form-label fw-bold">Select Seats</label>
                         <div className="d-flex flex-wrap gap-2 mb-3">

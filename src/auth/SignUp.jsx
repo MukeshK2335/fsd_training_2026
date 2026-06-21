@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import '../assets/css/auth.css'
 
 function SignUp() {
 
@@ -71,12 +72,12 @@ function SignUp() {
     }
 
     return (
-        <div className="container">
-            <div className="row mt-5 justify-content-center">
-                <div className="col-md-5">
-                    <div className="card shadow-lg border-0 rounded-4">
+        <div className="container signup-container">
+            <div className="row justify-content-center">
+                <div className="col-lg-5 col-md-7 col-sm-10">
+                    <div className="card signup-card shadow-lg">
                         <div className="card-header text-center bg-primary text-white py-3 rounded-top-4">
-                            <h5 className="mb-0 fw-semibold">✈️ Sign Up</h5>
+                            <h5 className="mb-0 fw-semibold">Sign Up</h5>
                         </div>
                         <div className="card-body px-4 py-4">
                             <form onSubmit={(e) => toSignUp(e)}>
@@ -100,13 +101,20 @@ function SignUp() {
                                         placeholder="Enter your name" />
                                 </div>
                                 <div className="mb-3">
-                                    <label className="form-label fw-medium text-secondary">Gender</label>
-                                    <select className="form-control form-control-lg rounded-3 border-1" required value={gender}
-                                        onChange={(e) => setGender(e.target.value)}>
-                                        <option value="">---select category----</option>
-                                        <option>MALE</option>
-                                        <option>FEMALE</option>
-                                        <option>OTHER</option>
+                                    <label className="form-label fw-medium text-secondary">
+                                        Gender
+                                    </label>
+
+                                    <select
+                                        className="form-select form-select-lg rounded-3"
+                                        required
+                                        value={gender}
+                                        onChange={(e) => setGender(e.target.value)}
+                                    >
+                                        <option value="">Select Gender</option>
+                                        <option value="MALE">MALE</option>
+                                        <option value="FEMALE">FEMALE</option>
+                                        <option value="OTHER">OTHER</option>
                                     </select>
                                 </div>
                                 <div className="mb-3">
@@ -156,7 +164,7 @@ function SignUp() {
                                 </div>
                             </form>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>

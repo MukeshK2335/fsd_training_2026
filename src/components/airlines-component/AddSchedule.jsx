@@ -18,7 +18,7 @@ function AddSchedule() {
 
     const addScheduleApi = "http://localhost:8080/api/schedule/add"
     const getFlightApi = "http://localhost:8080/api/flight/flight-owner"
-    const getRouteApi = "http://localhost:8080/api/route/all"
+    const getRouteApi = "http://localhost:8080/api/route/all/active"
     const config = {
         headers: {
             'Authorization': "Bearer " + localStorage.getItem('token')
@@ -41,7 +41,7 @@ function AddSchedule() {
 
             try {
                 const response = await axios.get(getRouteApi, config)
-                setRoute(response.data.data)
+                setRoute(response.data)
             }
             catch (err) {
                 console.log(err)

@@ -39,6 +39,8 @@ import PassengerProfile from "./components/passenger-components/PassenegrProfile
 import WidgetsPasseneger from "./components/passenger-components/WidegetPassenger"
 import ProfileAirlines from "./components/airlines-component/ProfileAirlines"
 import AirlinesDashboard from "./pages/AirlinesDashboard"
+import PasswordAirlinesReset from "./components/airlines-component/PasswordAirlinesReset"
+import PasswordPassengerReset from "./components/passenger-components/PasswordPassenegrReset"
 
 function app(){
 
@@ -62,6 +64,7 @@ function app(){
                 <Route path="view-ticket" element={<ViewTicket/>}></Route>
                 <Route path="ticket/:bookingId" element={<Ticket/>}></Route>
                 <Route path="profile" element={<PassengerProfile/>}></Route>
+                <Route path="change-password" element={<PasswordPassengerReset/>}></Route>
         </Route>
         <Route path="/airlines" element={<AirlinesDashboard/>}>
                 <Route path="" element={<WidgetsAirlines/>}></Route>
@@ -74,6 +77,7 @@ function app(){
                 <Route path="cancellations" element={<CancellationAirlines/>}></Route>
                 <Route path="cancellation-request" element={<CancellationRequest/>}></Route>
                 <Route path="profile" element={<ProfileAirlines/>}></Route>
+                <Route path="change-password" element={<PasswordAirlinesReset/>}></Route>
         </Route>
         <Route path="/admin" element={<AdminDashboard/>}>
                 <Route path="" element={<WidgetsAdmin/>}></Route>

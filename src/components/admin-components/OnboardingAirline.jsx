@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom"
 
 function OnboardingAirline() {
 
-    const [name, setName] = useState()
     const [companyName, setCompanyName] = useState()
     const [conatctnumber, setContactnumber] = useState()
     const [address, setAddress] = useState()
@@ -31,7 +30,6 @@ function OnboardingAirline() {
 
 
         let body = {
-            "name": name,
             "companyName": companyName,
             "contactNumber": conatctnumber,
             "address": address,
@@ -51,7 +49,6 @@ function OnboardingAirline() {
             setAddress("")
             setContactnumber("")
             setEmail("")
-            setName("")
             setUsername("")
             setCompanyName("")
             setErraddress(undefined)
@@ -107,12 +104,7 @@ function OnboardingAirline() {
                                         {userExistmsg}
                                     </div> : ""}
 
-                                <div className="mb-3">
-                                    <label className="form-label fw-medium text-secondary">Name</label>
-                                    <input type="text" className="form-control form-control-lg rounded-3 border-1" required value={name}
-                                        onChange={(e) => setName(e.target.value)}
-                                        placeholder="Enter your name" />
-                                </div>
+                                
                                 <div className="mb-3">
                                     <label className="form-label fw-medium text-secondary">Company Name</label>
                                     <input type="text" className="form-control form-control-lg rounded-3 border-1" value={companyName} placeholder="Enter Comapny Name"

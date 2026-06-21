@@ -2,31 +2,36 @@ import { useEffect, useState } from "react";
 import "../../assets/css/all-route-admin.css"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-function Route(){
+function Route() {
 
-    const [routes,setRoutes]=useState([])
-    const [errmsg,setErrmsg]=useState()
+    const [routes, setRoutes] = useState([])
+    const [errmsg, setErrmsg] = useState()
     const [currentPage, setCurrentPage] = useState(0)
     const [size, setSize] = useState(5)
     const [totalPages, setTotalPages] = useState(0)
     const [arry, setArry] = useState([])
-    const [totalCount,setTotalCount]=useState()
-    const navigate=useNavigate()
+    const [totalCount, setTotalCount] = useState()
+    const navigate = useNavigate()
     let count = 0
 
-    const getApi="http://localhost:8080/api/route/all"
+    const getApi = "http://localhost:8080/api/route/all"
+    const activeApi="http://localhost:8080/api/route/active/"
+    const inactiveApi="http://localhost:8080/api/route/inactive/"
+    const discontinueApi="http://localhost:8080/api/route/discontinue/"
 
-    useEffect(()=>{
-        const config = {
+
+    const config = {
             headers: {
                 'Authorization': "Bearer " + localStorage.getItem('token')
             }
         }
 
-        const getAllRoute= async ()=>{
+    useEffect(() => {
+        
+        const getAllRoute = async () => {
 
-            try{
-                const response=await axios.get(getApi+ `?page=${currentPage}&size=${size}`, config)
+            try {
+                const response = await axios.get(getApi + `?page=${currentPage}&size=${size}`, config)
                 setRoutes(response.data.data)
                 setTotalCount(response.data.totalRecords)
                 console.log(response.data.data)
@@ -36,7 +41,7 @@ function Route(){
                 setArry(Array.from({ length: totalPages }))
                 console.log(arry.length)
             }
-            catch(err){
+            catch (err) {
                 setErrmsg("Failed To Load")
                 console.log(err)
             }
@@ -44,9 +49,46 @@ function Route(){
         getAllRoute()
 
 
-    },[currentPage])
+    }, [currentPage])
 
-    return(
+    const getActive= async (id)=>{
+
+        try{
+            const r=await axios.put(activeApi+`${id}`,{},config)
+            setErrmsg(undefined)
+        }
+        catch(err)
+        {
+            console.log(err)
+            setErrmsg("Failed to Active")
+        }
+    }
+    const getInActive= async (id)=>{
+
+        try{
+            const r=await axios.put(inactiveApi+`${id}`,{},config)
+            setErrmsg(undefined)
+        }
+        catch(err)
+        {
+            console.log(err)
+            setErrmsg("Failed to InActive")
+        }
+    }
+    const getDiscontinue= async (id)=>{
+
+        try{
+            const r=await axios.put(discontinueApi+`${id}`,{},config)
+            setErrmsg(undefined)
+        }
+        catch(err)
+        {
+            console.log(err)
+            setErrmsg("Failed to Discontinue")
+        }
+    }
+
+    return (
         <div className="card shadow-sm border-0 route-card">
 
             <div className="card-body p-4">
@@ -57,7 +99,7 @@ function Route(){
                         Routes
                     </h4>
 
-                    <button onClick={()=>navigate("/admin/add-route")} className="btn btn-primary">
+                    <button onClick={() => navigate("/admin/add-route")} className="btn btn-primary">
                         <i className="bi bi-plus-circle me-2"></i>
                         Add Route
                     </button>
@@ -80,6 +122,7 @@ function Route(){
                                 <th>Origin</th>
                                 <th>Destination</th>
                                 <th>Status</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
 
@@ -110,15 +153,45 @@ function Route(){
                                     <td>
 
                                         <span
-                                            className={`badge ${
-                                                route.routeStatus === "ACTIVE"
+                                            className={`badge ${route.routeStatus === "ACTIVE"
                                                     ? "bg-success"
-                                                    : "bg-danger"
-                                            }`}
+                                                    : route.routeStatus === "INACTIVE"
+                                                        ? "bg-warning text-dark"
+                                                        : "bg-danger"
+                                                }`}
                                         >
                                             {route.routeStatus}
                                         </span>
 
+                                    </td>
+                                    <td>
+                                        <div className="d-flex gap-2">
+
+                                            <button
+                                                className="btn btn-success btn-sm"
+                                                disabled={route.routeStatus === "ACTIVE"}
+                                                onClick={() => getActive(route.id)}
+                                            >
+                                                Active
+                                            </button>
+
+                                            <button
+                                                className="btn btn-warning btn-sm"
+                                                disabled={route.routeStatus === "INACTIVE"}
+                                                onClick={() => getInActive(route.id)}
+                                            >
+                                                Inactive
+                                            </button>
+
+                                            <button
+                                                className="btn btn-danger btn-sm"
+                                                disabled={route.routeStatus === "DISCONTINUED"}
+                                                onClick={() => getDiscontinue(route.id)}
+                                            >
+                                                Discontinue
+                                            </button>
+
+                                        </div>
                                     </td>
 
                                 </tr>
@@ -128,7 +201,7 @@ function Route(){
                         </tbody>
 
                     </table>
-                     <nav aria-label="Page navigation example">
+                    <nav aria-label="Page navigation example">
                         <ul className="pagination justify-content-center">
 
                             <li className="page-item">
@@ -136,7 +209,7 @@ function Route(){
                                     onClick={() => setCurrentPage(currentPage - 1)}>Previous</button>
                             </li>
                             {
-                                Array.from({ length: totalPages },(_, index) => (
+                                Array.from({ length: totalPages }, (_, index) => (
                                     <li className="page-item" key={index} >
                                         <button className="page-link" onClick={() => setCurrentPage(index)}> {count = count + 1}
                                         </button>

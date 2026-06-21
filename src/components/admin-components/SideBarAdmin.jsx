@@ -44,7 +44,7 @@ function SideBArAdmin() {
                         </Link>
                     </li>
                     <li className="nav-item">
-                         <Link  to="/admin/airlines" className="nav-link bi bi-airplane">
+                         <Link  to="/admin/flights" className="nav-link bi bi-airplane">
                           Flights
                         </Link>
                     </li>

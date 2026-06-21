@@ -7,6 +7,12 @@ function BookingHistory() {
 
     const [bookings, setBookings] = useState([])
     const [errmsg, setErrmsg] = useState()
+    const [currentPage,setCurrentPage]=useState(0)
+    const [size,setSize]=useState(3)
+    const [totalPages,setTotalPages]=useState(0)
+    const [totalCount,setTotalCount]=useState()
+    const [arry,setArry]=useState([])
+    let count=0
     const navigate = useNavigate()
     const getAllBookingApi = "http://localhost:8080/api/booking/history"
     const cancelApi = "http://localhost:8080/api/cancellation/add/"
@@ -23,8 +29,11 @@ function BookingHistory() {
         const getBooking = async () => {
 
             try {
-                const response = await axios.get(getAllBookingApi, config)
-                setBookings(response.data)
+                const response = await axios.get(getAllBookingApi+`?page=${currentPage}&size=${size}`, config)
+                setBookings(response.data.data)
+                setTotalCount(response.data.totalRecords)
+                setTotalPages(response.data.totalPages)
+                setArry(Array.from({length:totalPages}))
             }
             catch (err) {
                 setErrmsg("Fail to Load")
@@ -33,7 +42,7 @@ function BookingHistory() {
         }
         getBooking()
 
-    }, [])
+    }, [currentPage])
     const toCancel = async () => {
         try {
             const response = await axios.post(cancelApi,)
@@ -50,7 +59,7 @@ function BookingHistory() {
                     <h4 className="fw-bold mb-0">Bookings</h4>
 
                     <span className="badge bg-primary booking-count">
-                        {bookings.length} Bookings
+                        {totalCount} Bookings
                     </span>
                 </div>
 
@@ -130,11 +139,11 @@ function BookingHistory() {
                                                 </span>
                                             </td>
                                             <td>
-                                                <button className="btn btn-sm btn-success me-2" disabled={b.bookingStatus === "CONFIRMED"}
+                                                <button className="btn btn-sm btn-success me-2" disabled={b.bookingStatus === "CONFIRMED" || new Date(b.departureTime) < new Date()}
                                                     onClick={() => navigate(`/passenger/payment/${b.bookingId}`)}>
                                                     Pay
                                                 </button>
-                                                <button className="btn btn-sm btn-danger"disabled={b.bookingStatus === "PENDING"}
+                                                <button className="btn btn-sm btn-danger"disabled={b.bookingStatus === "PENDING" || new Date(b.departureTime) < new Date()}
                                                     onClick={() => navigate(`/passenger/cancellation/${b.bookingId}`)}>
                                                     Cancel
                                                 </button>
@@ -145,6 +154,29 @@ function BookingHistory() {
                             }
                         </tbody>
                     </table>
+                    <nav aria-label="Page navigation example">
+                        <ul className="pagination justify-content-center">
+
+                            <li className="page-item">
+                                <button className="page-link" disabled={currentPage===0}
+                                    onClick={()=>setCurrentPage(currentPage-1)}>Previous</button>
+                            </li>
+                            {
+                                Array.from({length:totalPages},(_,index)=>(
+                                    <li className="page-item" key={index} >
+                                        <button className="page-link" onClick={() => setCurrentPage(index)}> {count = count + 1}
+                                        </button>
+                                    </li>
+                                ))
+                            }
+
+
+                            <li className="page-item">
+                                <button className="page-link" disabled={currentPage===(totalPages-1)}
+                                    onClick={()=>setCurrentPage(currentPage+1)}>Next</button>
+                            </li>
+                        </ul>
+                    </nav>
 
                 </div>
             </div>

@@ -5,14 +5,15 @@ import axios from "axios"
 
 
 function Cancellation() {
-
+    const [allcancellation, setAllCancellation] = useState([])
     const [cancellations, setCancellation] = useState([])
     const [errmsg, setErrmsg] = useState()
     const [currentPage, setCurrentPage] = useState(0)
-    const [size, setSize] = useState(1)
+    const [size, setSize] = useState(4)
     const [totalPages, setTotalPages] = useState(0)
     const [arry, setArry] = useState([])
-    const [totalCount,setTotalCount]=useState()
+    const [totalCount, setTotalCount] = useState()
+    const [cancelStatus, setCancelStatus] = useState("")
     let count = 0
 
     const getAllCancellationApi = "http://localhost:8080/api/cancellation/all"
@@ -28,7 +29,7 @@ function Cancellation() {
 
             try {
                 const response = await axios.get(getAllCancellationApi + `?page=${currentPage}&size=${size}`, config)
-                setCancellation(response.data.data)
+                setAllCancellation(response.data.data)
                 setTotalCount(response.data.totalRecords)
                 console.log(response.data.data)
                 setTotalPages(response.data.totalPages)
@@ -36,6 +37,12 @@ function Cancellation() {
                 console.log(response.data.totalPages)
                 setArry(Array.from({ length: totalPages }))
                 console.log(arry.length)
+                if(!cancelStatus){
+                    setCancellation(response.data.data)
+                }
+                else{
+                    setCancellation(response.data.data.filter((c)=>c.cancellationStatus===cancelStatus))
+                }
             }
             catch (err) {
                 setErrmsg("Failed to Load")
@@ -44,14 +51,50 @@ function Cancellation() {
         }
         getCancellation()
     }, [currentPage])
+
+    const handleCancelationFilter=()=>{
+
+        if(!cancelStatus){
+            setCancellation(allcancellation)
+        }
+        else{
+            setCancellation(allcancellation.filter((c)=>c.cancellationStatus===cancelStatus))
+        }
+    }
+
+    const handleCancelationClear=()=>{
+        setCancelStatus("")
+        setCancellation(allcancellation)
+    }
     return (
         <div className="card shadow-sm border-0 cancellation-card">
             <div className="card-body p-4">
                 <div className="d-flex justify-content-between align-items-center mb-4">
                     <h4 className="fw-bold mb-0">Cancellations</h4>
-                    <span className="badge bg-primary cancellation-count">
-                        {totalCount} Cancellations
-                    </span>
+                    <div className="d-flex align-items-center gap-3">
+                        <select
+                            className="form-select form-select-sm"
+                            style={{ width: "160px" }}
+                            value={cancelStatus}
+                            onChange={e => setCancelStatus(e.target.value)}
+                        >
+                            <option value="">All Status</option>
+                            <option value="APPROVED">Approved</option>
+                            <option value="REQUESTED">Requested</option>
+                            <option value="REJECTED">Rejected</option>
+                        </select>
+
+                        <button className="btn btn-primary btn-sm" onClick={handleCancelationFilter}>
+                            Apply
+                        </button>
+                        <button className="btn btn-outline-secondary btn-sm" onClick={handleCancelationClear}>
+                            Clear
+                        </button>
+                        <span className="badge bg-primary cancellation-count">
+                            {totalCount} Cancellations
+                        </span>
+                    </div>
+
                 </div>
                 <div className="table-responsive">
                     <table className="table align-middle cancellation-table mb-0">
@@ -157,7 +200,7 @@ function Cancellation() {
                                     onClick={() => setCurrentPage(currentPage - 1)}>Previous</button>
                             </li>
                             {
-                                Array.from({ length: totalPages },(_, index) => (
+                                Array.from({ length: totalPages }, (_, index) => (
                                     <li className="page-item" key={index} >
                                         <button className="page-link" onClick={() => setCurrentPage(index)}> {count = count + 1}
                                         </button>

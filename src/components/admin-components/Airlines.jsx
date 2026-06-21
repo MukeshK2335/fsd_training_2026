@@ -81,7 +81,6 @@ function Airlines(){
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Owner Name</th>
                                 <th>Company</th>
                                 <th>Username</th>
                                 <th>Contact</th>
@@ -101,13 +100,6 @@ function Airlines(){
                                                 #{a.id}
                                             </span>
                                         </td>
-
-                                        <td>
-                                            <div className="fw-semibold">
-                                                {a.name}
-                                            </div>
-                                        </td>
-
                                         <td>
                                             <div className="company-name">
                                                 {a.companyName}

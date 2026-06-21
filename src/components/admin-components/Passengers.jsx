@@ -8,15 +8,18 @@ import axios from 'axios';
 function Passengers() {
 
 
-    const [error, setError] = useState("");
+    const [error, setError] = useState();
+    const [successmsg, setSuccessmsg] = useState()
     const dispatch = useDispatch()
-    const { passengers } = useSelector(state => state.passengers)
-    
+    const { passengers, Pages, totalRecord } = useSelector(state => state.passengers)
+    const [currentPage, setCurrentPage] = useState(0)
+    let count = 0;
+
 
 
     useEffect(() => {
-        dispatch(getAll())
-    }, [])
+        dispatch(getAll(currentPage))
+    }, [currentPage])
 
     const deletePassenger = async (id) => {
 
@@ -27,14 +30,17 @@ function Passengers() {
         }
 
         try {
-            const response = await axios.delete(
-                `http://localhost:8080/api/passenger/delete/${id}`, config
-            )
+            const response = await axios.delete(`http://localhost:8080/api/passenger/delete/${id}`, config)
+            setError(undefined)
+            setSuccessmsg("Successfully Deleted")
+            dispatch(getAll(currentPage))
+
 
         }
         catch (err) {
             console.log(err)
             setError(err)
+            setSuccessmsg(undefined)
         }
 
 
@@ -49,9 +55,17 @@ function Passengers() {
                     <h4 className="fw-bold mb-0">Passengers</h4>
 
                     <span className="badge bg-primary passenger-count">
-                        {passengers.length} Passengers
+                        {totalRecord} Passengers
                     </span>
                 </div>
+                {error !== undefined ?
+                    <div className="alert alert-danger rounded-3 py-2 mb-3">
+                        {error}
+                    </div> : ""}
+                {successmsg !== undefined ?
+                    <div className="alert alert-success rounded-3 py-2 mb-3">
+                        {successmsg}
+                    </div> : ""}
 
                 <div className="table-responsive">
 
@@ -126,6 +140,29 @@ function Passengers() {
                         </tbody>
 
                     </table>
+                    <nav aria-label="Page navigation example">
+                        <ul className="pagination justify-content-center">
+
+                            <li className="page-item">
+                                <button className="page-link" disabled={currentPage === 0}
+                                    onClick={() => setCurrentPage(currentPage - 1)}>Previous</button>
+                            </li>
+                            {
+                                Array.from({ length: Pages }, (_, index) => (
+                                    <li className="page-item" key={index} >
+                                        <button className="page-link" onClick={() => setCurrentPage(index)}> {count = count + 1}
+                                        </button>
+                                    </li>
+                                ))
+                            }
+
+
+                            <li className="page-item">
+                                <button className="page-link" disabled={currentPage === (Pages - 1)}
+                                    onClick={() => setCurrentPage(currentPage + 1)}>Next</button>
+                            </li>
+                        </ul>
+                    </nav>
 
                 </div>
 

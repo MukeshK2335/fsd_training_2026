@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import "../../assets/css/Profile.css"
+import { useNavigate } from "react-router-dom"
 
 function PassengerProfile() {
     const [file, setFile] = useState()
@@ -8,6 +9,7 @@ function PassengerProfile() {
     const [successmsg, setSuccessmsg] = useState()
     const [passenger, setPassenger] = useState()
     const [uploading, setUploading] = useState()
+    const navigate=useNavigate()
 
     const uploadApi = "http://localhost:8080/api/passenger/id/upload"
     const profileApi = "http://localhost:8080/api/passenger/profile"
@@ -79,7 +81,7 @@ function PassengerProfile() {
                 <button
                     className="pp-change-pwd-btn"
                     style={{ position: "absolute", top: "1rem", right: "1rem" }}
-                    onClick={() => navigate("/airlines/change-password")}
+                    onClick={() => navigate("/passenger/change-password")}
                 >
                     🔒 Reset Password
                 </button>

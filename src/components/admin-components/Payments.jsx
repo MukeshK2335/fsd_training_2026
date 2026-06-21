@@ -4,6 +4,7 @@ import axios from "axios"
 
 
 function Payment() {
+    const [allPayment,setAllPayment]=useState([])
     const [payments, setPayments] = useState([])
     const [errmsg, setErrmsg] = useState()
     const [currentPage, setCurrentPage] = useState(0)
@@ -11,6 +12,7 @@ function Payment() {
     const [totalPages, setTotalPages] = useState(0)
     const [arry, setArry] = useState([])
     const [totalCount, setTotalCount] = useState()
+    const [payStatus,setPayStatus]=useState("")
     let count = 0
 
     const getAllPaymentsApi = "http://localhost:8080/api/payment/all"
@@ -25,7 +27,7 @@ function Payment() {
         const getPayments = async () => {
             try {
                 const response = await axios.get(getAllPaymentsApi + `?page=${currentPage}&size=${size}`, config)
-                setPayments(response.data.data)
+                setAllPayment(response.data.data)
                 setTotalCount(response.data.totalRecords)
                 console.log(response.data.data)
                 setTotalPages(response.data.totalPages)
@@ -33,6 +35,13 @@ function Payment() {
                 console.log(response.data.totalPages)
                 setArry(Array.from({ length: totalPages }))
                 console.log(arry.length)
+                if(!payStatus){
+                    setPayments(response.data.data)
+                }
+                else{
+                    setPayments(response.data.data.filter((p)=>p.paymentStatus===payStatus))
+                }
+
 
             }
             catch (err) {
@@ -43,16 +52,50 @@ function Payment() {
         }
         getPayments()
     }, [currentPage])
+
+    const handlePaymentStatusFilter=()=>{
+        if(!payStatus){
+            setPayments(allPayment)
+        }
+        else{
+            setPayments(allPayment.filter((p)=>p.paymentStatus===payStatus))
+        }
+    }
+
+    const handlePaymentStatusClear=()=>{
+        setPayStatus("")
+        setPayments(allPayment)
+    }
     return (
         <div className="card shadow-sm border-0 payment-card">
             <div className="card-body p-4">
 
                 <div className="d-flex justify-content-between align-items-center mb-4">
                     <h4 className="fw-bold mb-0">Payments</h4>
+                    <div className="d-flex align-items-center gap-3">
+                        <select
+                            className="form-select form-select-sm"
+                            style={{ width: "160px" }}
+                            value={payStatus}
+                            onChange={e => setPayStatus(e.target.value)}
+                        >
+                            <option value="">All Status</option>
+                            <option value="SUCCESS">Success</option>
+                            <option value="PENDING">Pending</option>
+                            <option value="FAILED">Failed</option>
+                        </select>
+
+                        <button className="btn btn-primary btn-sm" onClick={handlePaymentStatusFilter}>
+                            Apply
+                        </button>
+                        <button className="btn btn-outline-secondary btn-sm" onClick={handlePaymentStatusClear}>
+                            Clear
+                        </button>
 
                     <span className="badge bg-primary payment-count">
                         {totalCount} Payments
                     </span>
+                </div>
                 </div>
 
                 <div className="table-responsive">

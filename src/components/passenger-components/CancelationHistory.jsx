@@ -6,6 +6,12 @@ function CancellationHistory() {
 
     const [cancellations, setCancellation] = useState([])
     const [errmsg, setErrmsg] = useState()
+    const [currentPage, setCurrentPage] = useState(0)
+    const [size, setSize] = useState(3)
+    const [totalPages, setTotalPages] = useState(0)
+    const [totalCount, setTotalCount] = useState(0)
+    const [arry, setArry] = useState([])
+    let count = 0
 
 
     const getCancellationApi = "http://localhost:8080/api/cancellation/passenger"
@@ -19,8 +25,14 @@ function CancellationHistory() {
 
         const getCancellation = async () => {
             try {
-                const response = await axios.get(getCancellationApi, config)
-                setCancellation(response.data)
+                const response = await axios.get(getCancellationApi + `?page=${currentPage}&size=${size}`, config)
+                setCancellation(response.data.data)
+                setTotalPages(response.data.totalPages)
+                setTotalCount(response.data.totalRecords)
+                setArry(Array.from({ length: totalPages }))
+                setErrmsg(undefined)
+
+
 
             }
             catch (err) {
@@ -29,7 +41,7 @@ function CancellationHistory() {
             }
         }
         getCancellation()
-    }, [])
+    }, [currentPage])
 
     return (
         <div className="card shadow-sm border-0 cancellation-card">
@@ -37,7 +49,7 @@ function CancellationHistory() {
                 <div className="d-flex justify-content-between align-items-center mb-4">
                     <h4 className="fw-bold mb-0">Cancellation History</h4>
                     <span className="badge bg-primary cancellation-count">
-                        {cancellations.length} Cancellations
+                        {totalCount} Cancellations
                     </span>
                 </div>
 
@@ -119,7 +131,30 @@ function CancellationHistory() {
                             }
                         </tbody>
                     </table>
+                    <nav aria-label="Page navigation example">
+                        <ul className="pagination justify-content-center">
 
+                            <li className="page-item">
+                                <button className="page-link" disabled={currentPage===0}
+                                    onClick={()=>setCurrentPage(currentPage-1)}>Previous</button>
+                            </li>
+                            {
+                                Array.from({length:totalPages},(_,index)=>(
+                                    <li className="page-item" key={index} >
+                                        <button className="page-link" onClick={() => setCurrentPage(index)}> {count = count + 1}
+                                        </button>
+                                    </li>
+                                ))
+
+                            }
+
+
+                            <li className="page-item">
+                                <button className="page-link" disabled={currentPage ===(totalPages-1)}
+                                    onClick={()=>setCurrentPage(currentPage+1)}>Next</button>
+                            </li>
+                        </ul>
+                    </nav>
 
                 </div>
             </div>

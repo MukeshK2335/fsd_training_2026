@@ -89,7 +89,7 @@ function BookTicket() {
         }
 
         let ages = []
-        for (let i = 0; i < passengerAges.length; i++) {
+        for (let i = 0; i < passengerAges.length; i++) { //Optional
             ages.push(passengerAges[i])
         }
 

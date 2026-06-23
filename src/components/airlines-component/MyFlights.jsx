@@ -120,7 +120,9 @@ function MyFlights() {
 
                         <tbody>
 
-                            {flights?.map((flight) => (
+                            {
+                            flights.length > 0 ? (
+                            flights?.map((flight) => (
 
                                 <tr key={flight.id}>
 
@@ -177,7 +179,27 @@ function MyFlights() {
 
                                 </tr>
 
-                            ))}
+                            ))
+                        ):(
+                                    <tr>
+                                        <td colSpan="10" className="text-center py-5">
+                                            <div className="d-flex flex-column align-items-center">
+                                                <i
+                                                    className="bi bi-calendar-x"
+                                                    style={{ fontSize: "3rem" }}
+                                                ></i>
+                                                <h5 className="mt-3 mb-1">
+                                                    No Flights Found
+                                                </h5>
+                                                <p className="text-muted mb-0">
+                                                    No Flights are available at the moment.
+                                                </p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                )
+                        
+                        }
 
                         </tbody>
 

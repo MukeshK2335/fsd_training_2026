@@ -100,6 +100,7 @@ function CancellationRequest() {
                         </thead>
                         <tbody>
                             {
+                                cancellations.length > 0 ? (
                                 cancellations?.map((c, index) => (
                                     <tr key={index}>
                                         <td>
@@ -193,6 +194,24 @@ function CancellationRequest() {
 
                                     </tr>
                                 ))
+                            ):(
+                                    <tr>
+                                        <td colSpan="10" className="text-center py-5">
+                                            <div className="d-flex flex-column align-items-center">
+                                                <i
+                                                    className="bi bi-calendar-x"
+                                                    style={{ fontSize: "3rem" }}
+                                                ></i>
+                                                <h5 className="mt-3 mb-1">
+                                                    No Cancellation Request Found
+                                                </h5>
+                                                <p className="text-muted mb-0">
+                                                    No Cancellation Request are available at the moment.
+                                                </p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                )
                             }
 
                         </tbody>
@@ -206,7 +225,7 @@ function CancellationRequest() {
                                     onClick={() => setCurrentPage(currentPage - 1)}>Previous</button>
                             </li>
                             {
-                                Array.from({ length: totalPages }, (_, index) => (
+                                Array.from({ length: totalPages }).map((_, index) => (
                                     <li className="page-item" key={index} >
                                         <button className="page-link" onClick={() => setCurrentPage(index)}> {count = count + 1}
                                         </button>

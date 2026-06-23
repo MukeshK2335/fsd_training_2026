@@ -15,19 +15,19 @@ function Route() {
     let count = 0
 
     const getApi = "http://localhost:8080/api/route/all"
-    const activeApi="http://localhost:8080/api/route/active/"
-    const inactiveApi="http://localhost:8080/api/route/inactive/"
-    const discontinueApi="http://localhost:8080/api/route/discontinue/"
+    const activeApi = "http://localhost:8080/api/route/active/"
+    const inactiveApi = "http://localhost:8080/api/route/inactive/"
+    const discontinueApi = "http://localhost:8080/api/route/discontinue/"
 
 
     const config = {
-            headers: {
-                'Authorization': "Bearer " + localStorage.getItem('token')
-            }
+        headers: {
+            'Authorization': "Bearer " + localStorage.getItem('token')
         }
+    }
 
     useEffect(() => {
-        
+
         const getAllRoute = async () => {
 
             try {
@@ -51,38 +51,41 @@ function Route() {
 
     }, [currentPage])
 
-    const getActive= async (id)=>{
+    const getActive = async (id) => {
 
-        try{
-            const r=await axios.put(activeApi+`${id}`,{},config)
+        try {
+            const r = await axios.put(activeApi + `${id}`, {}, config)
             setErrmsg(undefined)
+            window.location.reload();
+
         }
-        catch(err)
-        {
+        catch (err) {
             console.log(err)
             setErrmsg("Failed to Active")
         }
     }
-    const getInActive= async (id)=>{
+    const getInActive = async (id) => {
 
-        try{
-            const r=await axios.put(inactiveApi+`${id}`,{},config)
+        try {
+            const r = await axios.put(inactiveApi + `${id}`, {}, config)
             setErrmsg(undefined)
+            window.location.reload();
+
         }
-        catch(err)
-        {
+        catch (err) {
             console.log(err)
             setErrmsg("Failed to InActive")
         }
     }
-    const getDiscontinue= async (id)=>{
+    const getDiscontinue = async (id) => {
 
-        try{
-            const r=await axios.put(discontinueApi+`${id}`,{},config)
+        try {
+            const r = await axios.put(discontinueApi + `${id}`, {}, config)
             setErrmsg(undefined)
+            window.location.reload();
+
         }
-        catch(err)
-        {
+        catch (err) {
             console.log(err)
             setErrmsg("Failed to Discontinue")
         }
@@ -154,10 +157,10 @@ function Route() {
 
                                         <span
                                             className={`badge ${route.routeStatus === "ACTIVE"
-                                                    ? "bg-success"
-                                                    : route.routeStatus === "INACTIVE"
-                                                        ? "bg-warning text-dark"
-                                                        : "bg-danger"
+                                                ? "bg-success"
+                                                : route.routeStatus === "INACTIVE"
+                                                    ? "bg-warning text-dark"
+                                                    : "bg-danger"
                                                 }`}
                                         >
                                             {route.routeStatus}

@@ -114,7 +114,6 @@ function ScheduleAirlines() {
                                 <th>Seats</th>
                                 <th>Fare</th>
                                 <th>Status</th>
-                                <th>Action</th>
                             </tr>
                         </thead>
 
@@ -198,13 +197,7 @@ function ScheduleAirlines() {
                                                         <i className="bi bi-x-circle me-1"></i>
                                                         Cancel
                                                     </button>
-                                                    <button
-                                                        className="btn btn-primary btn-sm"
-                                                        onClick={() => navigate(`/airlines/edit-schedule/${s.id}`)}
-                                                    >
-                                                        <i className="bi bi-pencil-square me-1"></i>
-                                                        Edit
-                                                    </button>
+                                                    
                                                 </div>
                                             </td>
                                         </tr>

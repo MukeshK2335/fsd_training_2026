@@ -76,89 +76,110 @@ function PaymentAirlines() {
                         <tbody>
 
                             {
-                                payments?.map((p, index) => (
-                                    <tr key={index}>
+                                payments.length > 0 ? (
 
-                                        <td>
-                                            <span className="payment-id">
-                                                #{p.paymentId}
-                                            </span>
-                                        </td>
+                                    payments?.map((p, index) => (
+                                        <tr key={index}>
 
-                                        <td>
-                                            <div className="fw-semibold">
-                                                {p.transactionId}
-                                            </div>
-                                        </td>
+                                            <td>
+                                                <span className="payment-id">
+                                                    #{p.paymentId}
+                                                </span>
+                                            </td>
 
-                                        <td>
-                                            {p.passengerName}
-                                        </td>
-
-                                        <td>
-                                            <div className="d-flex align-items-center gap-2">
-
-                                                <div className="payment-flight-avatar">
-                                                    <i className="bi bi-airplane-fill"></i>
+                                            <td>
+                                                <div className="fw-semibold">
+                                                    {p.transactionId}
                                                 </div>
+                                            </td>
 
-                                                <div>
-                                                    <div className="fw-semibold">
-                                                        {p.flightName}
+                                            <td>
+                                                {p.passengerName}
+                                            </td>
+
+                                            <td>
+                                                <div className="d-flex align-items-center gap-2">
+
+                                                    <div className="payment-flight-avatar">
+                                                        <i className="bi bi-airplane-fill"></i>
                                                     </div>
 
-                                                    <small className="text-muted">
-                                                        {p.flightNumber}
-                                                    </small>
-                                                </div>
+                                                    <div>
+                                                        <div className="fw-semibold">
+                                                            {p.flightName}
+                                                        </div>
 
+                                                        <small className="text-muted">
+                                                            {p.flightNumber}
+                                                        </small>
+                                                    </div>
+
+                                                </div>
+                                            </td>
+
+                                            <td>
+                                                {p.origin}
+                                                <i className="bi bi-arrow-right mx-2"></i>
+                                                {p.destination}
+                                            </td>
+
+                                            <td className="amount-text">
+                                                ₹{p.amount}
+                                            </td>
+
+                                            <td>
+                                                <span className="badge bg-light text-dark border">
+                                                    {p.paymentMethod}
+                                                </span>
+                                            </td>
+
+                                            <td>
+                                                <span
+                                                    className={`badge ${p.paymentStatus === "SUCCESS"
+                                                        ? "bg-success"
+                                                        : p.paymentStatus === "PENDING"
+                                                            ? "bg-warning text-dark"
+                                                            : "bg-danger"
+                                                        }`}
+                                                >
+                                                    {p.paymentStatus}
+                                                </span>
+                                            </td>
+
+                                            <td>
+                                                <span
+                                                    className={`badge ${p.bookingStatus === "CONFIRMED"
+                                                        ? "bg-success"
+                                                        : p.bookingStatus === "PENDING"
+                                                            ? "bg-warning text-dark"
+                                                            : "bg-danger"
+                                                        }`}
+                                                >
+                                                    {p.bookingStatus}
+                                                </span>
+                                            </td>
+
+                                        </tr>
+
+                                    ))
+                                ) : (
+                                    <tr>
+                                        <td colSpan="10" className="text-center py-5">
+                                            <div className="d-flex flex-column align-items-center">
+                                                <i
+                                                    className="bi bi-calendar-x"
+                                                    style={{ fontSize: "3rem" }}
+                                                ></i>
+                                                <h5 className="mt-3 mb-1">
+                                                    No Payments Found
+                                                </h5>
+                                                <p className="text-muted mb-0">
+                                                    No Payments are available at the moment.
+                                                </p>
                                             </div>
                                         </td>
-
-                                        <td>
-                                            {p.origin}
-                                            <i className="bi bi-arrow-right mx-2"></i>
-                                            {p.destination}
-                                        </td>
-
-                                        <td className="amount-text">
-                                            ₹{p.amount}
-                                        </td>
-
-                                        <td>
-                                            <span className="badge bg-light text-dark border">
-                                                {p.paymentMethod}
-                                            </span>
-                                        </td>
-
-                                        <td>
-                                            <span
-                                                className={`badge ${p.paymentStatus === "SUCCESS"
-                                                    ? "bg-success"
-                                                    : p.paymentStatus === "PENDING"
-                                                        ? "bg-warning text-dark"
-                                                        : "bg-danger"
-                                                    }`}
-                                            >
-                                                {p.paymentStatus}
-                                            </span>
-                                        </td>
-
-                                        <td>
-                                            <span
-                                                className={`badge ${p.bookingStatus === "CONFIRMED"
-                                                    ? "bg-success"
-                                                    : p.bookingStatus === "PENDING"
-                                                        ? "bg-warning text-dark"
-                                                        : "bg-danger"
-                                                    }`}
-                                            >
-                                                {p.bookingStatus}
-                                            </span>
-                                        </td>
-
                                     </tr>
-                                ))
+                                )
                             }
 
                         </tbody>
@@ -172,7 +193,7 @@ function PaymentAirlines() {
                                     onClick={() => setCurrentPage(currentPage - 1)}>Previous</button>
                             </li>
                             {
-                                Array.from({ length: totalPages }, (_, index) => (
+                                Array.from({ length: totalPages }).map((_, index) => (
                                     <li className="page-item" key={index} >
                                         <button className="page-link" onClick={() => setCurrentPage(index)}> {count = count + 1}
                                         </button>

@@ -63,6 +63,7 @@ function ViewTicket() {
                         </thead>
                         <tbody>
                             {
+                                bookings.length >0 ?(
                                 bookings.map((b, index) => {
 
                                     return (
@@ -120,6 +121,24 @@ function ViewTicket() {
                                         </tr>
                                     )
                                 })
+                            ):(
+                                    <tr>
+                                        <td colSpan="10" className="text-center py-5">
+                                            <div className="d-flex flex-column align-items-center">
+                                                <i
+                                                    className="bi bi-calendar-x"
+                                                    style={{ fontSize: "3rem" }}
+                                                ></i>
+                                                <h5 className="mt-3 mb-1">
+                                                    No Ticket Found
+                                                </h5>
+                                                <p className="text-muted mb-0">
+                                                    No Ticket are available at the moment.
+                                                </p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                )
                             }
                         </tbody>
                     </table>

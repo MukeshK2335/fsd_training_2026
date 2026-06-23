@@ -59,7 +59,7 @@ function Airlines(){
                     
                     <button onClick={()=>navigate("/admin/add-airlines")} className="btn btn-primary">
                         <i className="bi bi-plus-circle me-2"></i>
-                        Add Route
+                        Add Airline
                     </button>
 
                     {/* <span className="badge bg-primary airline-count">

@@ -1,0 +1,7 @@
+package com.atbs.exception;
+
+public class UnAuthorizedAccessException extends RuntimeException {
+    public UnAuthorizedAccessException(String message) {
+        super(message);
+    }
+}

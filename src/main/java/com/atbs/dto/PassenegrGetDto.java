@@ -1,0 +1,12 @@
+package com.atbs.dto;
+
+public record PassenegrGetDto(
+        int id,
+        String userName,
+        String name,
+        String gender,
+        String contactNumber,
+        String address,
+        String email
+) {
+}
